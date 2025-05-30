@@ -7,10 +7,18 @@ if (!uri || !uri.startsWith('mongodb')) {
 }
 
 const client = new MongoClient(uri);
-await client.connect();
+let db;
 
-const db = client.db('movie-db');
+export async function getDb() {
+  if (!db) {
+    await client.connect();
+    db = client.db('movie-db');
+  }
+  return {
+    movies: db.collection('movies'),
+    artists: db.collection('artists'),
+  };
+}
 
-export const movies = db.collection('movies');
-export const artists = db.collection('artists');
 export { ObjectId };
+    
