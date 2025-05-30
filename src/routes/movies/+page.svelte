@@ -2,6 +2,14 @@
   export let data;
 </script>
 
+<h1>Alle Filme</h1>
+
+<ul>
+  {#each data.movies as movie}
+    <li>{movie.title}</li>
+  {/each}
+</ul>
+
 <div class="container my-5">
   <h1 class="mb-4 text-white bg-dark p-3 rounded"> Filme</h1>
 

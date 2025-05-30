@@ -1,6 +1,12 @@
 import { MongoClient, ObjectId } from 'mongodb';
 
-const client = new MongoClient(import.meta.env.VITE_DB_URI);
+const uri = import.meta.env.VITE_DB_URI;
+
+if (!uri || !uri.startsWith('mongodb')) {
+  throw new Error('❌ VITE_DB_URI ist nicht gesetzt oder ungültig.');
+}
+
+const client = new MongoClient(uri);
 await client.connect();
 
 const db = client.db('movie-db');
