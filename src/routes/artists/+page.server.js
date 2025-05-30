@@ -1,11 +1,12 @@
 import { artists } from '$lib/db';
 
-
 export async function load() {
-  const { artists } = await getDb();
   const artistList = await artists.find().toArray();
 
   return {
-    artists: artistList
+    artists: artistList.map((a) => ({
+      ...a,
+      _id: a._id.toString()
+    }))
   };
 }
