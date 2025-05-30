@@ -4,9 +4,6 @@ export async function load() {
   const artistList = await artists.find().toArray();
 
   return {
-    artists: artistList.map((a) => ({
-      ...a,
-      _id: a._id.toString()
-    }))
+    artists: artistList
   };
 }
