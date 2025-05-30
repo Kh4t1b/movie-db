@@ -1,6 +1,6 @@
 import { MongoClient, ObjectId } from 'mongodb';
 
-const uri = import.meta.env.VITE_DB_URI;
+const uri = process.env.VITE_DB_URI;
 
 if (!uri || !uri.startsWith('mongodb')) {
   throw new Error('❌ VITE_DB_URI ist nicht gesetzt oder ungültig.');
