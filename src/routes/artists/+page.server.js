@@ -1,4 +1,5 @@
-import { getDb } from '$lib/db';
+import { artists } from '$lib/db';
+
 
 export async function load() {
   const { artists } = await getDb();
